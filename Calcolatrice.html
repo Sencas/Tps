@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<head>
+    <title>Calcolatrice</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Calcolatrice</h2>
+
+    <label for="espressione">Inserisci l'espressione:</label><br>
+    <input type="text" id="espressione"><br><br>
+
+    <button onclick="calcola()">Calcola</button>
+
+    <div class="box">
+        Risultato: <span id="risultato">0</span>
+    </div>
+
+    <script>
+        function calcola() {
+
+            var testo = document.getElementById("espressione").value;
+
+            var numeri = [];
+            var operatori = [];
+            var numeroCorrente = "";
+
+            for (var i = 0; i < testo.length; i++) {
+                var carattere = testo[i];
+
+                if (carattere === '+' || carattere === '-' || carattere === '*' || carattere === '/') {
+                    numeri.push(parseFloat(numeroCorrente));
+                    operatori.push(carattere);
+                    numeroCorrente = "";
+                } else {
+                    numeroCorrente += carattere;
+                }
+            }
+            numeri.push(parseFloat(numeroCorrente));
+
+            var totale = numeri[0];
+
+            for (var j = 0; j < operatori.length; j++) {
+                var op = operatori[j];
+                var prossimoNumero = numeri[j + 1];
+
+                if (op === '+') {
+                    totale = totale + prossimoNumero;
+                } else if (op === '-') {
+                    totale = totale - prossimoNumero;
+                } else if (op === '*') {
+                    totale = totale * prossimoNumero;
+                } else if (op === '/') {
+                    totale = totale / prossimoNumero;
+                }
+            }
+
+            document.getElementById("risultato").innerHTML = totale;
+        }
+    </script>
+
+</body>
+</html>
