@@ -3,7 +3,7 @@
 
  <head>
 
-  <title>Anagrafica1.1</title>
+  <title>Scheda Anagrafica con DOM</title>
 
   <script type="text/javascript">
 
@@ -102,3 +102,46 @@
                 <td><input type="text" id="cognome"></td>
             </tr>
             <tr>
+                <td>Anno di nascita:</td>
+                <td><input type="text" id="dataNascita" onchange="calcolaEta();"></td>
+            </tr>
+            <tr>
+                <td>Età:</td>
+                <td><input type="text" id="eta" readonly></td>
+            </tr>
+            <tr>
+                <td>Indirizzo:</td>
+                <td><input type="text" id="indirizzo"></td>
+            </tr>
+            <tr>
+                <td>Sesso:</td>
+                <td>
+                    <input type="radio" name="sesso" value="Maschio">Maschio<br>
+                    <input type="radio" name="sesso" value="Femmina">Femmina
+                </td>
+            </tr>
+            <tr>
+                <td>Materie preferite:</td>
+                <td>
+                    <input type="checkbox" name="materie" value="Informatica">Informatica<br>
+                    <input type="checkbox" name="materie" value="Matematica">Matematica<br>
+                    <input type="checkbox" name="materie" value="Sistemi">Sistemi<br>
+                    <input type="checkbox" name="materie" value="TPSIT">TPSIT
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center">
+                    <input type="button" onclick="controlla();" value="Invia">
+                    <input type="button" onclick="resetta();" value="Nuovo Inserimento">
+                </td>
+            </tr>
+        </table>
+
+    </div>
+
+    <br>
+    <div id="risp" style="margin-left:100px;"></div>
+
+  </body>
+
+ </html>
