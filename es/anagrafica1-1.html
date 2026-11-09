@@ -8,15 +8,9 @@
   <script type="text/javascript">
 
    function calcolaEta() {
-        var dataNascitaInput = document.getElementById("dataNascita").value;
-        if (dataNascitaInput != "") {
-            var oggi = new Date();
-            var dataNascita = new Date(dataNascitaInput);
-            
-            var annoOggi = oggi.getFullYear();
-            var annoNascita = dataNascita.getFullYear();
-            
-            var eta = annoOggi - annoNascita;
+        var dataNascita = document.getElementById("dataNascita").value;
+        if (dataNascita != "") {
+            var eta = 2026 - dataNascita;
             document.getElementById("eta").value = eta;
         }
    }
@@ -37,10 +31,10 @@
         }
 
         var materieSelezionate = "";
-        var chkMaterie = document.getElementsByName("materie");
-        for(i=0; i<chkMaterie.length; i++) {
-          if(chkMaterie[i].checked){
-            materieSelezionate = materieSelezionate + chkMaterie[i].value + " ";
+        var controllaMaterie = document.getElementsByName("materie");
+        for(i=0; i<controllaMaterie.length; i++) {
+          if(controllaMaterie[i].checked){
+            materieSelezionate = materieSelezionate + controllaMaterie[i].value + " ";
           }
         }
 
@@ -84,7 +78,7 @@
 
         var controllaMaterie = document.getElementsByName("materie");
         for(i=0; i<controllaMaterie.length; i++) {
-            chkMaterie[i].checked = false;
+            controllaMaterie[i].checked = false;
         }
 
         document.getElementById("risp").innerHTML = "";
@@ -108,46 +102,3 @@
                 <td><input type="text" id="cognome"></td>
             </tr>
             <tr>
-                <td>Data di nascita:</td>
-                <td><input type="date" id="dataNascita" onchange="calcolaEta();"></td>
-            </tr>
-            <tr>
-                <td>Età:</td>
-                <td><input type="text" id="eta" readonly></td>
-            </tr>
-            <tr>
-                <td>Indirizzo:</td>
-                <td><input type="text" id="indirizzo"></td>
-            </tr>
-            <tr>
-                <td>Sesso:</td>
-                <td>
-                    <input type="radio" name="sesso" value="Maschio">Maschio<br>
-                    <input type="radio" name="sesso" value="Femmina">Femmina
-                </td>
-            </tr>
-            <tr>
-                <td>Materie preferite:</td>
-                <td>
-                    <input type="checkbox" name="materie" value="Informatica">Informatica<br>
-                    <input type="checkbox" name="materie" value="Matematica">Matematica<br>
-                    <input type="checkbox" name="materie" value="Sistemi">Sistemi<br>
-                    <input type="checkbox" name="materie" value="TPSIT">TPSIT
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center">
-                    <input type="button" onclick="controlla();" value="Invia">
-                    <input type="button" onclick="resetta();" value="Nuovo Inserimento">
-                </td>
-            </tr>
-        </table>
-
-    </div>
-
-    <br>
-    <div id="risp" style="margin-left:100px;"></div>
-
-  </body>
-
- </html>
