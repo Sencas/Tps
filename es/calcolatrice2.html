@@ -15,11 +15,6 @@
         document.getElementById("display").value = "";
       }
 
-      function cancellaUno() {
-        var testo = document.getElementById("display").value;
-        document.getElementById("display").value = testo.slice(0, -1);
-      }
-
       function calcola() {
         var espressione = document.getElementById("display").value;
         if (espressione != "") {
@@ -35,37 +30,11 @@
           ris = Math.sqrt(val);
         } else if (tipo == "quadrato") {
           ris = Math.pow(val, 2);
-        } else if (tipo == "cubo") {
-          ris = Math.pow(val, 3);
-        } else if (tipo == "inverso") {
+        } else if (tipo == "reciproco") {
           ris = 1 / val;
-        } else if (tipo == "seno") {
-          ris = Math.sin(val);
-        } else if (tipo == "coseno") {
-          ris = Math.cos(val);
-        } else if (tipo == "tangente") {
-          ris = Math.tan(val);
-        } else if (tipo == "log") {
-          ris = Math.log10(val);
-        } else if (tipo == "ln") {
-          ris = Math.log(val);
-        } else if (tipo == "assoluto") {
-          ris = Math.abs(val);
-        } else if (tipo == "arrotonda") {
-          ris = Math.round(val);
-        } else if (tipo == "cambiaSegno") {
-          ris = val * -1;
         }
 
         document.getElementById("display").value = ris;
-      }
-
-      function inserisciCostante(costante) {
-        if (costante == "PI") {
-          document.getElementById("display").value = Math.PI;
-        } else if (costante == "E") {
-          document.getElementById("display").value = Math.E;
-        }
       }
 
     </script>
@@ -76,59 +45,41 @@
 
     <div style="margin-left:100px; margin-top:30px;">
 
-      <table border="1">
+      <table>
         <tr>
-          <td colspan="5">
-            <input type="text" id="display" style="width:265px; height:35px; font-size:20px; text-align:right;" readonly>
+          <td colspan="4">
+            <input type="text" id="display" style="width:210px; height:35px; font-size:20px; text-align:right;" readonly>
           </td>
         </tr>
         <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="sin" onclick="funzioneMath('seno')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="π" onclick="inserisciCostante('PI')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="e" onclick="inserisciCostante('E')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="C" onclick="cancellaTutto()"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="⌫" onclick="cancellaUno()"></td>
-        </tr>
-        <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="cos" onclick="funzioneMath('coseno')"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="1/x" onclick="funzioneMath('reciproco')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="x²" onclick="funzioneMath('quadrato')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="1/x" onclick="funzioneMath('inverso')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="|x|" onclick="funzioneMath('assoluto')"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="√x" onclick="funzioneMath('radice')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="÷" onclick="aggiungi('/')"></td>
         </tr>
         <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="tan" onclick="funzioneMath('tangente')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="√x" onclick="funzioneMath('radice')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="7" onclick="aggiungi('7')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="8" onclick="aggiungi('8')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="9" onclick="aggiungi('9')"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="×" onclick="aggiungi('*')"></td>
         </tr>
         <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="log" onclick="funzioneMath('log')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="x³" onclick="funzioneMath('cubo')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="4" onclick="aggiungi('4')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="5" onclick="aggiungi('5')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="6" onclick="aggiungi('6')"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="-" onclick="aggiungi('-')"></td>
         </tr>
         <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="ln" onclick="funzioneMath('ln')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="≈" onclick="funzioneMath('arrotonda')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="1" onclick="aggiungi('1')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="2" onclick="aggiungi('2')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="3" onclick="aggiungi('3')"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="+" onclick="aggiungi('+')"></td>
         </tr>
         <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="(" onclick="aggiungi('(')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value=")" onclick="aggiungi(')')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="+/-" onclick="funzioneMath('cambiaSegno')"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="C" onclick="cancellaTutto()"></td>
           <td><input type="button" style="width:50px; height:35px;" value="0" onclick="aggiungi('0')"></td>
           <td><input type="button" style="width:50px; height:35px;" value="." onclick="aggiungi('.')"></td>
-        </tr>
-        <tr>
-          <td><input type="button" style="width:50px; height:35px;" value="×" onclick="aggiungi('*')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="-" onclick="aggiungi('-')"></td>
-          <td><input type="button" style="width:50px; height:35px;" value="+" onclick="aggiungi('+')"></td>
-          <td colspan="2"><input type="button" style="width:106px; height:35px;" value="=" onclick="calcola()"></td>
+          <td><input type="button" style="width:50px; height:35px;" value="=" onclick="calcola()"></td>
         </tr>
       </table>
 
